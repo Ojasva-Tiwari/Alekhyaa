@@ -2,6 +2,7 @@ export interface OrderConfig {
   instagramDmUrl: string;
   instagramProfileUrl: string;
   instagramHandle: string;
+  whatsappNumber?: string;
   whatsappUrl?: string;
   businessEmail?: string;
   paymentUrl?: string;
@@ -28,7 +29,9 @@ export const siteConfig: SiteConfig = {
       "https://www.instagram.com/direct/t/18130565791552515/?hl=en",
     instagramProfileUrl: "https://www.instagram.com/aalekhy_aa/?hl=en",
     instagramHandle: "@aalekhy_aa",
-    whatsappUrl: "", // Extensible for future WhatsApp Business integration
+    whatsappNumber: "+91 82951 35585",
+    whatsappUrl:
+      "https://wa.me/918295135585?text=Hi%20%2C%20I%20came%20across%20your%20crazy%20good%20products%20%21",
     businessEmail: "", // Extensible for future direct email enquiries
     paymentUrl: "", // Extensible for future checkout / gateway
     defaultOrderLabel: "ORDER VIA INSTAGRAM ↗",
@@ -37,18 +40,22 @@ export const siteConfig: SiteConfig = {
 };
 
 /**
+ * Returns the exact WhatsApp order/enquiry link.
+ */
+export function getWhatsAppUrl(): string {
+  return (
+    siteConfig.order.whatsappUrl ||
+    "https://wa.me/918295135585?text=Hi%20%2C%20I%20came%20across%20your%20crazy%20good%20products%20%21"
+  );
+}
+
+/**
  * Returns the active order link for a product or custom request.
  * Allows instant redirection routing without altering individual components.
  */
 export function getOrderDestination(productName?: string): string {
   if (siteConfig.order.paymentUrl) {
     return siteConfig.order.paymentUrl;
-  }
-  if (siteConfig.order.whatsappUrl && !siteConfig.order.instagramDmUrl) {
-    const encoded = productName
-      ? encodeURIComponent(`Hi Aalekhya! I would like to order the "${productName}" hand-painted tie.`)
-      : encodeURIComponent(`Hi Aalekhya! I would like to enquire about a custom hand-painted tie.`);
-    return `${siteConfig.order.whatsappUrl}?text=${encoded}`;
   }
   return siteConfig.order.instagramDmUrl;
 }

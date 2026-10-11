@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { siteConfig, getOrderDestination } from "@/config/site";
+import { siteConfig, getOrderDestination, getWhatsAppUrl } from "@/config/site";
 import { ArrowUpRight, Sparkles, Disc, Palette, HeartHandshake } from "lucide-react";
 
 export function CustomTieSection() {
@@ -44,17 +44,34 @@ export function CustomTieSection() {
               </p>
 
               <div className="pt-4">
-                <a
-                  href={getOrderDestination()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] font-mono text-xs font-bold tracking-[0.2em] uppercase hover:opacity-90 hover:scale-105 active:scale-95 transition-all shadow-lg"
-                >
-                  <span>TALK TO AALEKHYA</span>
-                  <ArrowUpRight className="size-4" />
-                </a>
+                <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href={getOrderDestination()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] font-mono text-xs font-bold tracking-[0.2em] uppercase hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all shadow-lg"
+                  >
+                    <span>TALK TO AALEKHYA</span>
+                    <ArrowUpRight className="size-4" />
+                  </a>
+
+                  <a
+                    href={getWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl border font-mono text-xs font-bold tracking-wider uppercase hover:scale-[1.02] transition-all"
+                    style={{
+                      backgroundColor: "var(--btn-secondary-bg)",
+                      borderColor: "var(--btn-secondary-border)",
+                      color: "var(--text-primary)",
+                    }}
+                  >
+                    <span>WHATSAPP</span>
+                    <ArrowUpRight className="size-3.5" />
+                  </a>
+                </div>
                 <span className="block text-[11px] font-mono tracking-wider text-[var(--text-muted)] mt-3">
-                  DIRECT CONVERSATION VIA INSTAGRAM DM · CONSULTATION ON ARTWORK & MOTIFS
+                  DIRECT CONVERSATION VIA INSTAGRAM DM OR WHATSAPP · CONSULTATION ON ARTWORK & MOTIFS
                 </span>
               </div>
             </div>

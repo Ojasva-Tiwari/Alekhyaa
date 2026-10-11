@@ -54,7 +54,7 @@ export function Footer() {
             <ul className="space-y-2.5" style={{ color: "var(--text-secondary)" }}>
               <li>
                 <Link
-                  href="#collection"
+                  href="/#collection"
                   className="transition-opacity hover:opacity-70"
                 >
                   01. THE COLLECTION
@@ -62,26 +62,34 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#stories"
+                  href="/store"
                   className="transition-opacity hover:opacity-70"
                 >
-                  02. ARTWORK STORIES
+                  02. THE STORE
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#custom"
+                  href="/#stories"
                   className="transition-opacity hover:opacity-70"
                 >
-                  03. CUSTOM TIES
+                  03. ARTWORK STORIES
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#about"
+                  href="/#custom"
                   className="transition-opacity hover:opacity-70"
                 >
-                  04. ABOUT AALEKHYA
+                  04. CUSTOM TIES
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#about"
+                  className="transition-opacity hover:opacity-70"
+                >
+                  05. ABOUT AALEKHYA
                 </Link>
               </li>
             </ul>
@@ -99,14 +107,14 @@ export function Footer() {
               className="text-xs font-sans leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
-              Orders and custom commission requests are accepted directly through Instagram DM with the artist.
+              Orders and custom commission requests are accepted directly through Instagram DM or WhatsApp with the artist.
             </p>
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
               <a
                 href={getOrderDestination()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-bold tracking-widest uppercase transition-all shadow-sm hover:opacity-90 hover:scale-[1.01]"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-mono text-xs font-bold tracking-widest uppercase transition-all shadow-sm hover:opacity-90 hover:scale-[1.01]"
                 style={{
                   backgroundColor: "var(--btn-primary-bg)",
                   color: "var(--btn-primary-text)",
@@ -114,6 +122,21 @@ export function Footer() {
               >
                 <span>ORDER VIA INSTAGRAM</span>
                 <ArrowUpRight className="size-4" />
+              </a>
+
+              <a
+                href={siteConfig.order.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-mono text-xs font-bold tracking-widest uppercase transition-all border hover:scale-[1.01]"
+                style={{
+                  backgroundColor: "var(--btn-secondary-bg)",
+                  borderColor: "var(--btn-secondary-border)",
+                  color: "var(--text-primary)",
+                }}
+              >
+                <span>WHATSAPP</span>
+                <ArrowUpRight className="size-3.5" />
               </a>
             </div>
             <a

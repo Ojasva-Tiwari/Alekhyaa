@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { siteConfig, getOrderDestination } from "@/config/site";
+import { siteConfig, getOrderDestination, getWhatsAppUrl } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Menu, X, ArrowUpRight, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
@@ -21,10 +21,11 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "COLLECTION", href: "#collection" },
-    { label: "STORIES", href: "#stories" },
-    { label: "CUSTOM TIES", href: "#custom" },
-    { label: "ABOUT", href: "#about" },
+    { label: "COLLECTION", href: "/#collection" },
+    { label: "STORE", href: "/store" },
+    { label: "STORIES", href: "/#stories" },
+    { label: "CUSTOM TIES", href: "/#custom" },
+    { label: "ABOUT", href: "/#about" },
     { label: "INSTAGRAM", href: siteConfig.order.instagramProfileUrl, external: true },
   ];
 
@@ -54,7 +55,7 @@ export function Navbar() {
         {/* Desktop Navigation Links */}
         <nav
           aria-label="Main Navigation"
-          className="hidden md:flex items-center space-x-7 text-[12px] font-mono tracking-[0.2em] text-[var(--text-secondary)]"
+          className="hidden md:flex items-center space-x-6 lg:space-x-7 text-[12px] font-mono tracking-[0.2em] text-[var(--text-secondary)]"
         >
           {navLinks.map((link) => (
             <Link
@@ -71,7 +72,7 @@ export function Navbar() {
         </nav>
 
         {/* Header Right Actions */}
-        <div className="flex items-center space-x-2.5 sm:space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-2.5">
           {/* Light / Dark Mode Toggle */}
           <button
             type="button"
@@ -87,6 +88,19 @@ export function Navbar() {
             )}
           </button>
 
+          {/* WhatsApp Enquiry/Order */}
+          <a
+            href={getWhatsAppUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-[var(--btn-secondary-border)] bg-[var(--btn-secondary-bg)] hover:bg-[var(--btn-primary-bg)] text-[var(--text-secondary)] hover:text-[var(--btn-primary-text)] transition-all duration-300 text-[11px] font-mono tracking-[0.16em] uppercase backdrop-blur-sm"
+            title="Enquire or order on WhatsApp"
+          >
+            <span>WHATSAPP</span>
+            <ArrowUpRight className="size-3" />
+          </a>
+
+          {/* Instagram Order */}
           <a
             href={getOrderDestination()}
             target="_blank"
@@ -112,8 +126,8 @@ export function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-x-0 top-full bg-[var(--bg-header)] backdrop-blur-xl border-b border-[var(--border-subtle)] p-6 shadow-2xl transition-all">
-          <nav className="flex flex-col space-y-5 text-sm font-mono tracking-[0.25em] text-[var(--text-secondary)]">
+        <div className="md:hidden absolute inset-x-0 top-full bg-[var(--bg-header)] backdrop-blur-xl border-b border-[var(--border-subtle)] p-6 shadow-2xl transition-all">
+          <nav className="flex flex-col space-y-4 text-sm font-mono tracking-[0.25em] text-[var(--text-secondary)]">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
@@ -127,7 +141,16 @@ export function Navbar() {
                 {link.external && <ArrowUpRight className="size-3.5 opacity-50" />}
               </Link>
             ))}
-            <div className="pt-4">
+            <div className="pt-4 space-y-2.5">
+              <a
+                href={getWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-lg border border-[var(--btn-secondary-border)] bg-[var(--btn-secondary-bg)] text-[var(--text-primary)] font-mono text-xs tracking-widest uppercase font-semibold hover:opacity-90 transition-opacity"
+              >
+                <span>WHATSAPP ENQUIRY ↗</span>
+              </a>
               <a
                 href={getOrderDestination()}
                 target="_blank"

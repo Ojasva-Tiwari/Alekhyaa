@@ -57,31 +57,15 @@ export function HeroWheelSection() {
         aria-hidden="true"
       />
 
-      {/* Decorative Brand Top Banner */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 md:px-12 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-4">
+      {/* Brand Header */}
+      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 md:px-12 text-center md:text-left">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-subtle)] bg-[var(--btn-secondary-bg)] backdrop-blur-md mb-3 text-[10px] font-mono tracking-[0.25em] text-[var(--text-secondary)] uppercase">
-            <span
-              className="size-1.5 rounded-full animate-pulse"
-              style={{ backgroundColor: activeProduct.accent.primary }}
-            />
-            HAND-PAINTED WEARABLE ART
-          </div>
           <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.18em] uppercase text-[var(--text-primary)] drop-shadow-sm">
             AALEKHYA
           </h1>
-          <p className="font-display text-lg md:text-xl text-[var(--text-secondary)] tracking-widest mt-1 italic">
+          <p className="font-display text-lg md:text-xl text-[var(--text-secondary)] tracking-widest mt-1.5 italic">
             &ldquo;{siteConfig.tagline}&rdquo;
           </p>
-        </div>
-
-        <div className="max-w-md text-xs md:text-sm font-sans text-[var(--text-muted)] leading-relaxed tracking-wide md:text-right">
-          <p>
-            Every tie tells a different story. Original hand-painted neckwear inspired by music, emotion, and visual consciousness.
-          </p>
-          <span className="font-mono text-[10px] tracking-[0.2em] text-[var(--text-faint)] uppercase mt-1 block">
-            LIMITED ARTWORK PIECES · NO TWO REPLICAS IDENTICAL
-          </span>
         </div>
       </div>
 

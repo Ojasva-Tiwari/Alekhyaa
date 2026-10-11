@@ -3,6 +3,7 @@
 import * as React from "react";
 import { PRODUCTS, type Product } from "@/data/products";
 import { ArrowUpRight, Music, Sparkles, Layers } from "lucide-react";
+import { getWhatsAppUrl } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 export function ProductStoryShowcase() {
@@ -211,7 +212,7 @@ export function ProductStoryShowcase() {
 
               {/* Order / Conversion Box */}
               <div className="pt-8 border-t border-[var(--border-subtle)]">
-                <div className="rounded-2xl border border-[var(--border-medium)] bg-[var(--btn-secondary-bg)] p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="rounded-2xl border border-[var(--border-medium)] bg-[var(--btn-secondary-bg)] p-6 flex flex-col md:flex-row items-center justify-between gap-4">
                   <div>
                     <span className="text-[11px] font-mono tracking-widest text-[var(--text-muted)] uppercase block">
                       AALEKHYA ORDER
@@ -220,19 +221,36 @@ export function ProductStoryShowcase() {
                       Order {selectedProduct.name}
                     </span>
                     <span className="text-xs text-[var(--text-muted)] font-sans">
-                      Connect via Instagram DM to order this piece.
+                      Connect via Instagram DM or WhatsApp to order this piece.
                     </span>
                   </div>
 
-                  <a
-                    href={selectedProduct.orderUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] font-mono text-xs font-bold tracking-widest uppercase hover:opacity-90 hover:scale-105 active:scale-95 transition-all shadow-lg"
-                  >
-                    <span>ORDER NOW VIA DM</span>
-                    <ArrowUpRight className="size-4" />
-                  </a>
+                  <div className="shrink-0 w-full md:w-auto flex flex-col sm:flex-row items-center gap-2.5">
+                    <a
+                      href={getWhatsAppUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border font-mono text-xs font-bold tracking-widest uppercase hover:scale-[1.02] transition-all"
+                      style={{
+                        backgroundColor: "var(--btn-secondary-bg)",
+                        borderColor: "var(--btn-secondary-border)",
+                        color: "var(--text-primary)",
+                      }}
+                    >
+                      <span>WHATSAPP</span>
+                      <ArrowUpRight className="size-3.5" />
+                    </a>
+
+                    <a
+                      href={selectedProduct.orderUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] font-mono text-xs font-bold tracking-widest uppercase hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all shadow-lg"
+                    >
+                      <span>ORDER VIA DM</span>
+                      <ArrowUpRight className="size-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
