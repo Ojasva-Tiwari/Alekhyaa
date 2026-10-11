@@ -326,33 +326,33 @@ export function WorksWheel({
                 >
                   <span
                     className={cn(
-                      "relative block size-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-b from-[#131318] to-[#09090c] p-2.5 transition-all duration-300 md:p-3.5",
+                      "relative block size-full overflow-hidden rounded-xl border border-[var(--wheel-card-border)] bg-gradient-to-b from-[var(--wheel-card-bg-start)] to-[var(--wheel-card-bg-end)] p-2.5 transition-all duration-300 md:p-3.5",
                       isSelected
-                        ? "shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] ring-1 ring-white/20"
+                        ? "shadow-[var(--wheel-card-shadow)] ring-1 ring-[var(--border-medium)]"
                         : "opacity-85 hover:opacity-100"
                     )}
                   >
                     {/* Subtle art card header badge */}
-                    <div className="absolute top-3.5 left-3.5 right-3.5 z-20 flex items-center justify-between text-[10px] tracking-widest text-white/60 uppercase">
+                    <div className="absolute top-3.5 left-3.5 right-3.5 z-20 flex items-center justify-between text-[10px] tracking-widest text-[var(--text-muted)] uppercase">
                       <span className="font-mono">0{i + 1} / 0{count}</span>
                       {item.price && (
-                        <span className="font-medium text-white/90">{item.price}</span>
+                        <span className="font-medium text-[var(--text-primary)]">{item.price}</span>
                       )}
                     </div>
 
                     {/* Tie Product Visual Container */}
-                    <div className="relative flex size-full items-center justify-center overflow-hidden rounded-lg bg-black/40">
+                    <div className="relative flex size-full items-center justify-center overflow-hidden rounded-lg bg-[var(--wheel-card-inner)]">
                       <img
                         src={item.image}
                         alt={`Hand-painted tie — ${item.title}`}
                         draggable={false}
-                        className="size-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] transition-transform duration-500 group-hover:scale-[1.03]"
+                        className="size-full object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)] transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     </div>
 
                     {/* Card Hover Action Affordance */}
                     {action && (
-                      <span className="pointer-events-none absolute right-3.5 bottom-3.5 z-20 flex translate-y-1 items-center gap-1.5 rounded-full border border-white/20 bg-black/85 px-3 py-1.5 text-[11px] font-medium tracking-wider text-white opacity-0 backdrop-blur-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+                      <span className="pointer-events-none absolute right-3.5 bottom-3.5 z-20 flex translate-y-1 items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--btn-primary-bg)] px-3 py-1.5 text-[11px] font-medium tracking-wider text-[var(--btn-primary-text)] opacity-0 backdrop-blur-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 shadow-sm">
                         <span>{action}</span>
                         <svg
                           viewBox="0 0 12 12"
@@ -381,14 +381,14 @@ export function WorksWheel({
       {/* Ring Title (Center before scroll) */}
       <div
         ref={labelRef}
-        className="pointer-events-none absolute inset-0 grid place-items-center tracking-[0.2em] uppercase font-serif text-white/90"
+        className="pointer-events-none absolute inset-0 grid place-items-center tracking-[0.2em] uppercase font-serif text-[var(--wheel-ring-text)]"
         style={{ fontSize: metrics.title }}
       >
         <div className="flex flex-col items-center text-center">
-          <span className="text-xs font-sans tracking-[0.35em] text-white/40 mb-2">COLLECTION 2026</span>
+          <span className="text-xs font-sans tracking-[0.35em] text-[var(--text-muted)] mb-2">COLLECTION 2026</span>
           <span>{label}</span>
-          <span className="text-xs font-sans tracking-[0.25em] text-white/50 mt-3 flex items-center gap-2">
-            <span className="inline-block size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-xs font-sans tracking-[0.25em] text-[var(--text-muted)] mt-3 flex items-center gap-2">
+            <span className="inline-block size-1.5 rounded-full bg-emerald-500 animate-pulse" />
             TURN OR SCROLL TO ENTER
           </span>
         </div>
@@ -397,7 +397,7 @@ export function WorksWheel({
       {/* Active Piece Name Overlay (Subtle watermarked background typography) */}
       <div
         ref={titleRef}
-        className="pointer-events-none absolute top-1/2 left-[5%] md:left-[7%] -translate-y-1/2 tracking-[0.12em] font-serif text-white/10 text-5xl md:text-7xl lg:text-8xl select-none uppercase opacity-0 transition-opacity"
+        className="pointer-events-none absolute top-1/2 left-[5%] md:left-[7%] -translate-y-1/2 tracking-[0.12em] font-serif text-[var(--wheel-watermark)] text-5xl md:text-7xl lg:text-8xl select-none uppercase opacity-0 transition-opacity"
       >
         {activeItem?.title}
       </div>
@@ -407,7 +407,7 @@ export function WorksWheel({
         aria-label="Collection Index"
         className="absolute top-[8%] right-[3%] md:right-[4%] z-30 text-right"
       >
-        <p className="text-[10px] tracking-[0.3em] uppercase text-white/30 mb-2 font-mono">
+        <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--text-faint)] mb-2 font-mono">
           CATALOGUE [0{count}]
         </p>
         <ol className="space-y-1 font-mono text-[12px] md:text-[13px] leading-relaxed">
@@ -417,18 +417,18 @@ export function WorksWheel({
                 type="button"
                 onClick={() => to(i + 1)}
                 className={cn(
-                  "cursor-pointer transition-all duration-300 outline-none text-white/40 hover:text-white/80 flex items-center justify-end gap-2 group",
-                  i === active && "text-white font-semibold scale-105"
+                  "cursor-pointer transition-all duration-300 outline-none text-[var(--text-muted)] hover:text-[var(--text-primary)] flex items-center justify-end gap-2 group",
+                  i === active && "text-[var(--text-primary)] font-semibold scale-105"
                 )}
               >
-                <span className="text-[10px] text-white/30 group-hover:text-white/60">
+                <span className="text-[10px] text-[var(--text-faint)] group-hover:text-[var(--text-muted)]">
                   0{i + 1}
                 </span>
-                <span className={cn(i === active ? "border-b border-white" : "")}>
+                <span className={cn(i === active ? "border-b border-[var(--text-primary)]" : "")}>
                   {item.title}
                 </span>
                 {i === active && (
-                  <span className="size-1.5 rounded-full bg-white ml-0.5 inline-block" />
+                  <span className="size-1.5 rounded-full bg-[var(--text-primary)] ml-0.5 inline-block" />
                 )}
               </button>
             </li>
@@ -437,7 +437,7 @@ export function WorksWheel({
       </nav>
 
       {/* Mobile/Touch Swipe Hint & Quick Nav */}
-      <div className="absolute bottom-4 left-0 right-0 z-20 flex items-center justify-between px-6 text-[11px] font-mono tracking-widest text-white/40 md:hidden">
+      <div className="absolute bottom-4 left-0 right-0 z-20 flex items-center justify-between px-6 text-[11px] font-mono tracking-widest text-[var(--text-faint)] md:hidden">
         <span>0{active + 1} / 0{count}</span>
         <span className="animate-pulse">DRAG OR SWIPE TO ROTATE</span>
         <button

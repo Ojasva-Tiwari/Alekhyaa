@@ -69,18 +69,44 @@ export const metadata: Metadata = {
   },
 };
 
+import { ThemeProvider } from "@/context/ThemeContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+(function() {
+  try {
+    var stored = localStorage.getItem('alekhya_theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    if (stored === 'light' || (!stored && prefersLight && !prefersDark)) {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    }
+  } catch (e) {}
+})();
+`,
+          }}
+        />
+      </head>
       <body
-        className={`${cinzel.variable} ${syne.variable} ${inter.variable} font-sans bg-[#070709] text-[#f5f5f7] relative min-h-screen selection:bg-white/20`}
+        className={`${cinzel.variable} ${syne.variable} ${inter.variable} font-sans bg-[var(--bg-page)] text-[var(--text-primary)] relative min-h-screen transition-colors duration-300`}
       >
-        <div className="noise-overlay" aria-hidden="true" />
-        {children}
+        <ThemeProvider>
+          <div className="noise-overlay" aria-hidden="true" />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

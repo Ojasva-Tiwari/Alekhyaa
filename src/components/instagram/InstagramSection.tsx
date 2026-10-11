@@ -44,20 +44,40 @@ export function InstagramSection() {
   ];
 
   return (
-    <section id="instagram" className="relative py-24 md:py-32 bg-[#050507] text-white border-t border-white/[0.08]">
+    <section
+      id="instagram"
+      className="relative py-24 md:py-32 border-t transition-colors duration-300"
+      style={{
+        backgroundColor: "var(--bg-section-2)",
+        color: "var(--text-primary)",
+        borderColor: "var(--border-subtle)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Header with Handle & CTA */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b border-white/10">
+        <div
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-12 border-b"
+          style={{ borderColor: "var(--border-subtle)" }}
+        >
           <div>
-            <div className="inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.3em] uppercase text-white/50 mb-3">
-              <InstagramIcon className="size-3.5 text-pink-400" />
+            <div
+              className="inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.3em] uppercase mb-3"
+              style={{ color: "var(--text-faint)" }}
+            >
+              <InstagramIcon className="size-3.5 text-pink-500" />
               COMMUNITY & PROCESS JOURNAL
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-wider uppercase text-white">
+            <h2
+              className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-wider uppercase"
+              style={{ color: "var(--text-primary)" }}
+            >
               {siteConfig.order.instagramHandle}
             </h2>
-            <p className="font-mono text-xs text-white/60 tracking-wider mt-2">
+            <p
+              className="font-mono text-xs tracking-wider mt-2"
+              style={{ color: "var(--text-muted)" }}
+            >
               AALEKHYA | Hand Painted Ties · Music you can wear.
             </p>
           </div>
@@ -67,7 +87,12 @@ export function InstagramSection() {
               href={siteConfig.order.instagramProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/20 bg-white/5 hover:bg-white text-white hover:text-black font-mono text-xs tracking-widest uppercase transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border font-mono text-xs tracking-widest uppercase transition-all duration-300 hover:scale-[1.02]"
+              style={{
+                backgroundColor: "var(--btn-secondary-bg)",
+                borderColor: "var(--btn-secondary-border)",
+                color: "var(--text-primary)",
+              }}
             >
               <span>FOLLOW THE JOURNEY</span>
               <ArrowUpRight className="size-4" />
@@ -83,7 +108,11 @@ export function InstagramSection() {
               href={siteConfig.order.instagramProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#0c0c11] aspect-[3/4] flex items-center justify-center p-3"
+              className="group relative rounded-2xl overflow-hidden border aspect-[3/4] flex items-center justify-center p-3 transition-all duration-300 shadow-sm"
+              style={{
+                backgroundColor: "var(--bg-card)",
+                borderColor: "var(--border-subtle)",
+              }}
             >
               <img
                 src={shot.src}

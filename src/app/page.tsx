@@ -8,7 +8,13 @@ import { Footer } from "@/components/footer/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#070709] text-white selection:bg-white/20 selection:text-white relative">
+    <main
+      className="min-h-screen relative transition-colors duration-300"
+      style={{
+        backgroundColor: "var(--bg-page)",
+        color: "var(--text-primary)",
+      }}
+    >
       <Navbar />
       <HeroWheelSection />
       <ProductStoryShowcase />

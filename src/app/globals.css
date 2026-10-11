@@ -3,43 +3,121 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 240 10% 3.5%;
-    --foreground: 0 0% 98%;
-    --card: 240 8% 6%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 8% 6%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 8% 6%;
-    --secondary: 240 6% 12%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 6% 12%;
-    --muted-foreground: 240 5% 64%;
-    --accent: 240 6% 14%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 6% 15%;
-    --input: 240 6% 15%;
-    --ring: 0 0% 80%;
-    --radius: 0.75rem;
+  :root,
+  html.dark {
+    color-scheme: dark;
+    --bg-page: #070709;
+    --bg-section-1: #09090d;
+    --bg-section-2: #060608;
+    --bg-section-3: #07070a;
+    --bg-card: #0d0d13;
+    --bg-card-surface: #0c0c11;
+    --bg-header: rgba(7, 7, 10, 0.85);
+    --bg-hud: rgba(12, 12, 17, 0.85);
+
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.72);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --text-faint: rgba(255, 255, 255, 0.32);
+
+    --border-subtle: rgba(255, 255, 255, 0.1);
+    --border-medium: rgba(255, 255, 255, 0.18);
+    --border-strong: rgba(255, 255, 255, 0.3);
+
+    --btn-primary-bg: #ffffff;
+    --btn-primary-text: #000000;
+    --btn-secondary-bg: rgba(255, 255, 255, 0.05);
+    --btn-secondary-border: rgba(255, 255, 255, 0.2);
+
+    --badge-bg: rgba(255, 255, 255, 0.05);
+    --badge-border: rgba(255, 255, 255, 0.12);
+
+    --wheel-card-bg-start: #131318;
+    --wheel-card-bg-end: #09090c;
+    --wheel-card-border: rgba(255, 255, 255, 0.1);
+    --wheel-card-inner: rgba(0, 0, 0, 0.45);
+    --wheel-card-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
+    --wheel-ring-text: rgba(255, 255, 255, 0.9);
+    --wheel-watermark: rgba(255, 255, 255, 0.08);
+
+    --selection-bg: rgba(255, 255, 255, 0.25);
+    --selection-text: #ffffff;
+    --noise-opacity: 0.028;
+
+    --scrollbar-track: #070709;
+    --scrollbar-thumb: #23232b;
+    --scrollbar-thumb-hover: #3e3e4a;
+
+    --hero-glow-opacity: 0.45;
+  }
+
+  html.light {
+    color-scheme: light;
+    /* Warm luxury editorial art-book / museum gallery aesthetic */
+    --bg-page: #f7f5f0;
+    --bg-section-1: #f2efe7;
+    --bg-section-2: #ede8de;
+    --bg-section-3: #f5f2e9;
+    --bg-card: #ffffff;
+    --bg-card-surface: #fcfbf9;
+    --bg-header: rgba(247, 245, 240, 0.88);
+    --bg-hud: rgba(255, 255, 255, 0.94);
+
+    --text-primary: #121215;
+    --text-secondary: #3d3c46;
+    --text-muted: #6a6875;
+    --text-faint: #9896a4;
+
+    --border-subtle: rgba(18, 18, 21, 0.09);
+    --border-medium: rgba(18, 18, 21, 0.18);
+    --border-strong: rgba(18, 18, 21, 0.32);
+
+    --btn-primary-bg: #121215;
+    --btn-primary-text: #f7f5f0;
+    --btn-secondary-bg: rgba(18, 18, 21, 0.05);
+    --btn-secondary-border: rgba(18, 18, 21, 0.16);
+
+    --badge-bg: rgba(18, 18, 21, 0.05);
+    --badge-border: rgba(18, 18, 21, 0.12);
+
+    --wheel-card-bg-start: #ffffff;
+    --wheel-card-bg-end: #f4f1e8;
+    --wheel-card-border: rgba(18, 18, 21, 0.12);
+    --wheel-card-inner: rgba(18, 18, 21, 0.035);
+    --wheel-card-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.12);
+    --wheel-ring-text: rgba(18, 18, 21, 0.9);
+    --wheel-watermark: rgba(18, 18, 21, 0.05);
+
+    --selection-bg: rgba(18, 18, 21, 0.15);
+    --selection-text: #121215;
+    --noise-opacity: 0.015;
+
+    --scrollbar-track: #f7f5f0;
+    --scrollbar-thumb: #d3cfc5;
+    --scrollbar-thumb-hover: #b8b3a5;
+
+    --hero-glow-opacity: 0.18;
   }
 
   * {
-    @apply border-border;
+    border-color: var(--border-subtle);
   }
 
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-white/20 selection:text-white;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    @apply antialiased transition-colors duration-300;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    background-color: #070709;
     overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--selection-bg);
+    color: var(--selection-text);
   }
 }
 
@@ -51,9 +129,10 @@
   width: 100vw;
   height: 100vh;
   content: "";
-  opacity: 0.028;
+  opacity: var(--noise-opacity);
   pointer-events: none;
   z-index: 999;
+  transition: opacity 300ms ease;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -63,12 +142,12 @@
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #070709;
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: #23232b;
+  background: var(--scrollbar-thumb);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3e3e4a;
+  background: var(--scrollbar-thumb-hover);
 }
